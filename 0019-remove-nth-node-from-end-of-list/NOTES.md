@@ -1,1 +1,5 @@
-​
+​![image](https://github.com/Jiyarathore/Leetcode/assets/96529109/5d13f045-ca20-4550-9eaf-8d248735a787)
+![image](https://github.com/Jiyarathore/Leetcode/assets/96529109/489481fb-b8f1-469b-abc3-2dbd34553a1f)
+![image](https://github.com/Jiyarathore/Leetcode/assets/96529109/5da646b8-e8de-469d-9d0c-6323f71c0074)
+![image](https://github.com/Jiyarathore/Leetcode/assets/96529109/d4876218-1a1b-4609-95a3-76c3386cd88e)
+![image](https://github.com/Jiyarathore/Leetcode/assets/96529109/9ff8c4f7-3c00-45ae-8f9a-dcacfe346f01)
