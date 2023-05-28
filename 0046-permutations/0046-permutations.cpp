@@ -1,23 +1,22 @@
 class Solution {
-public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        if(nums.size()<=1){
-            return {nums};
+    
+    void recurPermute(int index, vector<int>&nums, vector<vector<int>>&ans){
+        if(index==nums.size()){
+ans.push_back(nums);
+        return;
         }
         
-        vector<vector<int>>result;
-        for(int i=0;i<nums.size();i++){
-            vector<int> v(nums.begin(),nums.end());
-            v.erase(v.begin() + i);
-            auto res = permute(v);
-            
-            for(int j=0;j<res.size();j++){
-                vector<int>_v = res[j];
-                _v.insert(_v.begin(),nums[i]); // add the nums[i] which was deleted in initial stage at statrting of vector _v
-                
-                result.push_back(_v);
-            }
+        for(int i=index;i<nums.size();i++){
+            swap(nums[index],nums[i]);
+            recurPermute(index+1,nums,ans);
+            swap(nums[index],nums[i]);
         }
-        return result;
+    }
+    
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>ans;
+        recurPermute(0,nums,ans);
+        return ans;
     }
 };
