@@ -2,13 +2,21 @@ class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
         int n=nums.size();
-        int l=0,r=n-1;
-        while(l<=r){
-            int m=l+(r-l)/2;
-            if(nums[m]==target) return m;
-            if(nums[m]<target) l= m+1;
-            else r=m-1;
+        int low = 0, high = n - 1;
+        int ans = n;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        // maybe an answer
+        if (nums[mid] >= target) {
+            ans = mid;
+            //look for smaller index on the left
+            high = mid - 1;
         }
-        return l;
+        else {
+            low = mid + 1; // look on the right
+        }
+    }
+    return ans;
     }
 };
