@@ -43,5 +43,6 @@ public:
         if(head==nullptr) return nullptr;
         
         return convertBST(head,nullptr);
+        // https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/discuss/3282118/Image-Explanation-Slow-Fast-Pointer-%2B-Recursion-Complete-Intuition
     }
 };
