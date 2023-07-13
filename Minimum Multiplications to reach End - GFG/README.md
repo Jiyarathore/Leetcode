@@ -6,7 +6,7 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong>
+<pre><span style="font-size:18px"><strong>Input:</strong>
 arr[] = {2, 5, 7}
 start = 3, end = 30
 <strong>Output:</strong>
@@ -14,11 +14,11 @@ start = 3, end = 30
 <strong>Explanation:</strong>
 Step 1: 3*2 = 6 % 100000 = 6 
 Step 2: 6*5 = 30 % 100000 = 30
-</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</span></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong>
+<pre><span style="font-size:18px"><strong>Input:</strong>
 arr[] = {3, 4, 65}
 start = 7, end = 66175
 <strong>Output:</strong>
@@ -28,7 +28,7 @@ Step 1: 7*3 = 21 % 100000 = 21&nbsp;
 Step 2: 21*3 = 63 % 100000 = 63&nbsp;
 Step 3: 63*65 = 4095 % 100000 = 4095&nbsp;
 Step 4: 4095*65 = 266175 % 100000 = 66175
-</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</span></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong></span></p>
 
