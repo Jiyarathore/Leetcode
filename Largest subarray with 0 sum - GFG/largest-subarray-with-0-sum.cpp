@@ -6,39 +6,32 @@ using namespace std;
 
 
 // } Driver Code Ends
-// /*You are required to complete this function*/ {15,-2,2,-8,1,7,10,23}
-// Output: 5
+/*You are required to complete this function*/
 
 class Solution{
     public:
     int maxLen(vector<int>&a, int n)
     {   
         // Your code here
-        unordered_map<int,int>presum;
-        
-        int sum=0 ;
-        int max_len=0;
-        
-        for(int i=0;i<n;i++){
-            sum+=a[i];
-            
-            if(a[i]==0 && max_len==0)
-            max_len=1;
-            
-            if(sum==0)
-            max_len=i+1;
-            
-            // look for this in hash tablw
-            if(presum.find(sum)!=presum.end()){
-                // if this sum is seen before, them update maxlen
-                max_len=max(max_len, i-presum[sum]);
-            }
-            else{
-                // else insert this sum with index in hash table
-                presum[sum]=i;
-            }
-        }
-        return max_len;
+       unordered_map<int,int>m;
+       int sum=0,maxi=0;
+       for(int i=0;i<n;i++){
+           sum+=a[i];
+           
+           if(sum==0){
+               maxi=i+1;
+           }
+           
+           else{
+               if(m.find(sum)!=m.end()){
+                   maxi=max(maxi,i-m[sum]);
+               }
+               else{
+                   m[sum]=i;
+               }
+           }
+       }
+       return maxi;
     }
 };
 
