@@ -24,6 +24,8 @@ public:
 //     }
     
 //     Floyd's Cycle Finding ALgo/ Hare-Tortoise algorithm
+//     SPace complexity O(1)
+//     Time Complexity O(logm)
     
     int nextNumber(int n){
         int newNumber=0;
