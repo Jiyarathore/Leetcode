@@ -38,20 +38,40 @@ public:
     
 //     Recursive DP - Memoization :
     
-    int ans=0;
+//     int ans=0;
+//     int findLength(vector<int>&a, vector<int>&b){
+//         int n=a.size(),m=b.size();
+//         vector<vector<int>>dp(n,vector<int>(m,-1));
+//         solve(a,b,0,0,dp);
+//         return ans;
+//     }
+//     int solve(vector<int>&a, vector<int>&b,int i,int j,vector<vector<int>>&dp){
+//         if(i>=size(a) || j>=size(b)) return 0;
+        
+//         if(dp[i][j]!=-1) return dp[i][j];
+//         solve(a,b,i+1,j,dp), solve(a,b,i,j+1,dp);
+//         dp[i][j]=a[i]==b[j] ? solve(a,b,i+1,j+1,dp) +1 :0;
+//         ans=max(ans,dp[i][j]);
+//         return dp[i][j];
+//     }
+    
+//     Tabulation
+    
     int findLength(vector<int>&a, vector<int>&b){
-        int n=a.size(),m=b.size();
-        vector<vector<int>>dp(n,vector<int>(m,-1));
-        solve(a,b,0,0,dp);
+        int n=size(a),m=size(b);
+        vector<vector<int>> dp(n, vector<int>(m, 0));
+        int ans=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i]==b[j]){
+                    if(i==0 || j==0) dp[i][j]=1;
+                    else dp[i][j]=dp[i-1][j-1] + 1;
+                    ans=max(ans,dp[i][j]);
+                }
+            }
+        }
         return ans;
     }
-    int solve(vector<int>&a, vector<int>&b,int i,int j,vector<vector<int>>&dp){
-        if(i>=size(a) || j>=size(b)) return 0;
-        
-        if(dp[i][j]!=-1) return dp[i][j];
-        solve(a,b,i+1,j,dp), solve(a,b,i,j+1,dp);
-        dp[i][j]=a[i]==b[j] ? solve(a,b,i+1,j+1,dp) +1 :0;
-        ans=max(ans,dp[i][j]);
-        return dp[i][j];
-    }
+//     Time Complexity: O(n*m), where n is the size of nums1 and m is the size of nums2.
+// Space Complexity: O(n*m)
 };
