@@ -23,7 +23,8 @@ public:
         if(!root) return;
         
         inorder(root->left,k);
-        if(--k==0){
+        k--;
+        if(k==0){
             ans=root->val;
             return;
         }
