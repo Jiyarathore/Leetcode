@@ -37,28 +37,51 @@ public:
     
     // Tabulation
     
+    // int knapSack(int n, int W, int val[], int wt[]){
+    //     vector<vector<int>>dp(n,vector<int>(W+1,0));
+        
+    //     for(int i=wt[0];i<=W;i++){
+    //         dp[0][i]=(i/wt[0])*val[0];
+    //     }
+        
+    //     for(int ind=1;ind<n;ind++){
+    //         for(int cap=0;cap<=W;cap++){
+    //             int nonTaken=0+dp[ind-1][cap];
+                
+    //             int taken=INT_MIN;
+    //             if(wt[ind]<=cap){
+    //                 taken=val[ind]+dp[ind][cap-wt[ind]];
+    //             }
+                
+    //             dp[ind][cap]=max(nonTaken,taken);
+    //         }
+    //     }
+    //     return dp[n-1][W];
+    // }
+    
+    
+    // Space optimiazation
+    
     int knapSack(int n, int W, int val[], int wt[]){
-        vector<vector<int>>dp(n,vector<int>(W+1,0));
+        vector<int>cur(W+1,0);
         
         for(int i=wt[0];i<=W;i++){
-            dp[0][i]=(i/wt[0])*val[0];
+            cur[i]=(i/wt[0])*val[0];
         }
         
         for(int ind=1;ind<n;ind++){
             for(int cap=0;cap<=W;cap++){
-                int nonTaken=0+dp[ind-1][cap];
+                int nonTaken=cur[cap];
                 
                 int taken=INT_MIN;
-                if(wt[ind]<=cap){
-                    taken=val[ind]+dp[ind][cap-wt[ind]];
-                }
+                if(wt[ind]<=cap)
+                taken=val[ind]+cur[cap-wt[ind]];
                 
-                dp[ind][cap]=max(nonTaken,taken);
+                cur[cap]=max(nonTaken,taken);
             }
         }
-        return dp[n-1][W];
+        return cur[W];
     }
-    
     
 };
 
