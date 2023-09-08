@@ -9,29 +9,57 @@ using namespace std;
 
 class Solution{
 public:
-    int knapSackUtil(int* wt, int* val, int ind, int W, vector<vector<int>>&dp){
-        if(ind==0){
-            return (W/wt[0])*val[0];
+
+// Memorization
+    // int knapSackUtil(int* wt, int* val, int ind, int W, vector<vector<int>>&dp){
+    //     if(ind==0){
+    //         return (W/wt[0])*val[0];
+    //     }
+        
+    //     if(dp[ind][W]!=-1) return dp[ind][W];
+        
+    //     int nonTaken= 0+knapSackUtil(wt,val,ind-1,W,dp);
+        
+    //     int taken=INT_MIN;
+    //     if(wt[ind]<=W)
+    //     taken=val[ind] + knapSackUtil(wt,val,ind,W-wt[ind],dp);
+        
+    //     return dp[ind][W]=max(nonTaken, taken);
+    // }
+    
+    // int knapSack(int n, int W, int val[], int wt[])
+    // {
+    //     // code here
+        
+    //     vector<vector<int>>dp(n,vector<int>(W+1,-1));
+    //     return knapSackUtil(wt,val,n-1,W,dp);
+    // }
+    
+    // Tabulation
+    
+    int knapSack(int n, int W, int val[], int wt[]){
+        vector<vector<int>>dp(n,vector<int>(W+1,0));
+        
+        for(int i=wt[0];i<=W;i++){
+            dp[0][i]=(i/wt[0])*val[0];
         }
         
-        if(dp[ind][W]!=-1) return dp[ind][W];
-        
-        int nonTaken= 0+knapSackUtil(wt,val,ind-1,W,dp);
-        
-        int taken=INT_MIN;
-        if(wt[ind]<=W)
-        taken=val[ind] + knapSackUtil(wt,val,ind,W-wt[ind],dp);
-        
-        return dp[ind][W]=max(nonTaken, taken);
+        for(int ind=1;ind<n;ind++){
+            for(int cap=0;cap<=W;cap++){
+                int nonTaken=0+dp[ind-1][cap];
+                
+                int taken=INT_MIN;
+                if(wt[ind]<=cap){
+                    taken=val[ind]+dp[ind][cap-wt[ind]];
+                }
+                
+                dp[ind][cap]=max(nonTaken,taken);
+            }
+        }
+        return dp[n-1][W];
     }
     
-    int knapSack(int n, int W, int val[], int wt[])
-    {
-        // code here
-        
-        vector<vector<int>>dp(n,vector<int>(W+1,-1));
-        return knapSackUtil(wt,val,n-1,W,dp);
-    }
+    
 };
 
 //{ Driver Code Starts.
