@@ -28,7 +28,8 @@ public:
     // The value at dp[n][m] contains the length of the LCS
     return dp[n][m];
 }
-
+// deletions= word1.length() - lcs(1,2)   insertions=word2.length()-lcs(1,2)
+//     ans=del+ins
     int minDistance(string word1, string word2) {
         return word1.length() + word2.length() - 2*lcs(word1, word2);
     }
