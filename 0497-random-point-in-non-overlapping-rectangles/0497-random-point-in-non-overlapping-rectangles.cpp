@@ -27,6 +27,7 @@ public:
         return {fx,fy};
     }
 };
+// https://www.youtube.com/watch?v=8kwPXbTMSnk
 
 /**
  * Your Solution object will be instantiated and called as such:
